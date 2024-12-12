@@ -59,3 +59,22 @@ resource "google_bigquery_table" "sheet" {
     ]
   }
 }
+
+resource "google_bigquery_table" "sheet2" {
+  dataset_id = google_bigquery_dataset.test_dataset_tf.dataset_id
+  table_id   = "table_from_sheets_v2"
+  deletion_protection = false #permite destruir el recurso
+
+  external_data_configuration {
+    autodetect    = true
+    source_format = "GOOGLE_SHEETS"
+
+    google_sheets_options {
+      skip_leading_rows = 1
+    }
+
+    source_uris = [
+      "https://docs.google.com/spreadsheets/d/1JwH31r2ulBYYbgWzS4hcI5Lm5P8_kqvXjAN4V0vaI04"
+    ]
+  }
+}

@@ -15,6 +15,13 @@ resource "google_project_iam_member" "bq_service_account_binding" {
   member  = "serviceAccount:${google_service_account.bq_service_account.email}"
 }
 
+#otorgar permisos a la cuenta de servicio de Big Query para trabajar con google sheets
+# resource "google_project_iam_member" "svc_token_creator" {
+#   project = var.project_id
+#   role    = "roles/iam.serviceAccountTokenCreator"
+#   member  = "serviceAccount:${google_service_account.bq_service_account.email}"
+# }
+
 
 //  IAM CLOUD STORAGE
 
