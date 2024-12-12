@@ -18,9 +18,9 @@ module "cloud-storage" {
 }
 
 module "big-query" {
-  source = "./modules/big-query"
+  source      = "./modules/big-query"
   region_name = var.region_name
-  project_id = var.project_id   
+  project_id  = var.project_id
 }
 
 # module "cloud-composer" {

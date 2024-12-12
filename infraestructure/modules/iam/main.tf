@@ -42,7 +42,7 @@ resource "google_project_iam_custom_role" "cs-custom-role" {
 }
 
 #otorgar permisos/roles a la cuenta de servicio de Cloud Storage
-resource "google_project_iam_member" "storage_service_account_binding" {
+resource "google_project_iam_member" "storage_service_account" {
   project = var.project_id
   role    = google_project_iam_custom_role.cs-custom-role.name
   member  = "serviceAccount:${google_service_account.gcs_service_account.email}"
@@ -79,7 +79,7 @@ resource "google_project_iam_custom_role" "composer-custom-role" {
 }
 
 #otorgar permisos/roles a la cuenta de servicio de Cloud Composer
-resource "google_project_iam_member" "composer_service_account_binding" {
+resource "google_project_iam_member" "composer_service_account" {
   project = var.project_id
   role    = google_project_iam_custom_role.composer-custom-role.name
   member  = "serviceAccount:${google_service_account.composer_service_account.email}"

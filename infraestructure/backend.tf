@@ -3,6 +3,6 @@ terraform {
   backend "gcs" {
     bucket      = "datapipeline-terraform-state"
     prefix      = "terraform/state"
-    credentials = "./datapipeline-442115-05bad4e29e08.json"
+    credentials = "./datapipeline-442115-d2b6e4a9790b.json"
   }
 }

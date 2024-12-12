@@ -6,6 +6,8 @@ resource "google_project_service" "services" {
     "bigquery.googleapis.com", # BigQuery
     "storage.googleapis.com",  # Cloud Storage
     "iam.googleapis.com",      # IAM
+    "drive.googleapis.com",    # Google Drive
+    "sheets.googleapis.com"    # Google Sheets
   ])
 
   project = var.project_id
