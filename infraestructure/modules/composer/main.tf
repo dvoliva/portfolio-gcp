@@ -1,4 +1,4 @@
-resource "google_composer_environment" "composer_test_tf" {
+resource "google_composer_environment" "composer_etl" {
   name   = "example-composer-env-tf-c2"
   region = "us-central1"
   config {
@@ -32,22 +32,22 @@ resource "google_composer_environment" "composer_test_tf" {
     environment_size = "ENVIRONMENT_SIZE_SMALL"
 
     node_config {
-      network    = google_compute_network.test.id
-      subnetwork = google_compute_subnetwork.test.id
+      network    = google_compute_network.test_etl_ntwk.id
+      subnetwork = google_compute_subnetwork.test_etl_subntwk.id
       service_account = var.composer-svc-email
     }
   }
 }
 
-resource "google_compute_network" "test" {
+resource "google_compute_network" "test_etl_ntwk" {
   name                    = "composer-test-network3"
   auto_create_subnetworks = false
 }
 
-resource "google_compute_subnetwork" "test" {
+resource "google_compute_subnetwork" "test_etl_subntwk" {
   name          = "composer-test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"
   region        = var.region_name
-  network       = google_compute_network.test.id
+  network       = google_compute_network.test_etl_ntwk.id
 }
 

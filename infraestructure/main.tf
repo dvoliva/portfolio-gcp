@@ -1,5 +1,6 @@
 
 #consumo de los modulos declarados
+
 module "iam" {
   source         = "./modules/iam"
   project_id     = var.project_id
@@ -23,9 +24,9 @@ module "big-query" {
   project_id  = var.project_id
 }
 
-# module "cloud-composer" {
-#   source = "./modules/composer"
-#   region_name = var.region_name
-#   project_id = var.project_id
-#   composer-svc-email = module.iam.composer-svc
-# }
+module "cloud-composer" {
+  source = "./modules/composer"
+  region_name = var.region_name
+  project_id = var.project_id
+  composer-svc-email = module.iam.composer-svc
+}
